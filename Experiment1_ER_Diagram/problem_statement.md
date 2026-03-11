@@ -106,8 +106,8 @@ A popular restaurant wants to manage reservations, orders, and billing.
 - Waiters assigned to serve reservations.
 
 ### ER Diagram:
-*Paste or attach your diagram here*  
-![ER Diagram](er_diagram_restaurant.png)
+<img width="1280" height="853" alt="image" src="https://github.com/user-attachments/assets/588fe56b-121f-4a92-a4df-4336385b62eb" />
+
 
 ### Entities and Attributes
 
