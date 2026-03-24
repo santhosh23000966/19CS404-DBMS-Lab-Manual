@@ -75,26 +75,31 @@ The Central Library wants to manage book lending and cultural events.
 
 ### Entities and Attributes
 
-| Entity | Attributes (PK, FK) | Notes |
-|--------|--------------------|-------|
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
+| Entity  | Attributes (PK, FK)                                               | Notes                          |
+| ------- | ----------------------------------------------------------------- | ------------------------------ |
+| member  | **member_id (PK)**, name, address, phone                          | Stores member details          |
+| book    | **book_id (PK)**, title, author, category                         | Stores book information        |
+| loan    | **loan_id (PK)**, loan_date, **member_id (FK)**, **book_id (FK)** | Records borrowing details      |
+| fine    | **fine_id (PK)**, amount, payment_status                          | Fine generated for late return |
+| event   | **event_id (PK)**, event_name, event_date, topic                  | Library events                 |
+| room    | **room_id (PK)**, room_name, location                             | Event location                 |
+| speaker | **speaker_id (PK)**, speaker_name, contact, expertise             | Event speaker details          |
+
 
 ### Relationships and Constraints
-
-| Relationship | Cardinality | Participation | Notes |
-|--------------|------------|---------------|-------|
-|              |            |               |       |
-|              |            |               |       |
-|              |            |               |       |
+| Relationship                 | Cardinality | Participation  | Notes                             |
+| ---------------------------- | ----------- | -------------- | --------------------------------- |
+| borrows (member–loan)        | 1 : N       | Total on loan  | One member can borrow many books  |
+| recorded_in (loan–book)      | N : 1       | Total on loan  | Each loan refers to one book      |
+| generates (loan–fine)        | 1 : 1       | Partial        | Fine generated only if late       |
+| registers (member–event)     | M : N       | Partial        | Members can register for events   |
+| held_in (event–room)         | 1 : N       | Total on event | Each event held in a room         |
+| conducted_by (event–speaker) | M : N       | Partial        | Events can have multiple speakers |
 
 ### Assumptions
-- 
-- 
-- 
+- Each entity has a unique primary key, and relationships are maintained using foreign keys.
+- A member can borrow multiple books and register for multiple events.
+- Fines are generated only for overdue loans, and not all loans result in a fine.
 
 ---
 
