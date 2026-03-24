@@ -27,21 +27,25 @@ FlexiFit Gym wants a database to manage its members, trainers, and fitness progr
 
 ### Entities and Attributes
 
-| Entity | Attributes (PK, FK) | Notes |
-|--------|--------------------|-------|
-|book       |                    |       |
-|loan      |                    |       |
-|member        |                    |       |
-|event        |                    |       |
-|room        |                    |       |
+| Entity | Attributes (PK, FK) | 
+|--------|--------------------|
+|member      |member_id(PK),name,phone,membership_type,start_date|
+|program      |program_id,program_name,duration,schedule|
+|Trainer        |trainer_id(PK),trainer_name,specialization,phone |
+|Session        |session_id(PK),session_date,session_time,trainer_id(FK)   |
+|Payment        |payment_id(PK),payment_type,payment_date|
+|Attendance      |attendance_id(PK),status,member_id(FK),seesion_id(FK)                    |
+
 
 ### Relationships and Constraints
 
-| Relationship | Cardinality | Participation | Notes |
-|--------------|------------|---------------|-------|
-|              |            |               |       |
-|              |            |               |       |
-|              |            |               |       |
+| Relationship | Entities Involved | Cardinality |
+|--------------|------------|---------------|
+|joins         |member-program|M:N          |      
+|assigned_to   |program-trainer| M:N        |       
+|books         |member-session |1:N         |       
+|makes         |member-payment |1:N         |       
+|has           |session-attendance|1:N      |       
 
 ### Assumptions
 - 
