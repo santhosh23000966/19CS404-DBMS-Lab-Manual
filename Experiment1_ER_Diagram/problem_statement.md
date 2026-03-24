@@ -48,9 +48,11 @@ FlexiFit Gym wants a database to manage its members, trainers, and fitness progr
 |has           |session-attendance|1:N      |       
 
 ### Assumptions
-- 
-- 
-- 
+- Each entity (Member, Program, Trainer, Session, Payment, Attendance) has a unique primary key, and relationships are maintained using foreign keys.
+- The system supports many-to-many and one-to-many relationships, such as members joining multiple programs and making multiple payments.
+- All necessary details (like name, date, amount, schedule) are properly stored and assumed to be valid (no missing or incorrect data).
+
+ 
 
 ---
 
