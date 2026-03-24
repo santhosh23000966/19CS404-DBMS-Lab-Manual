@@ -122,27 +122,33 @@ A popular restaurant wants to manage reservations, orders, and billing.
 
 ### Entities and Attributes
 
-| Entity | Attributes (PK, FK) | Notes |
-|--------|--------------------|-------|
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
+| Entity      | Attributes (PK, FK)                                            | Notes                        |
+| ----------- | -------------------------------------------------------------- | ---------------------------- |
+| customer    | **customer_id (PK)**, name                                     | Stores customer details      |
+| reservation | **reservation_id (PK)**, date, **customer_id (FK)**            | Reservation made by customer |
+| waiter      | **waiter_id (PK)**, name                                       | Waiter details               |
+| dish        | **dish_id (PK)**, name                                         | Food items available         |
+| category    | **category_id (PK)**, category_name                            | Dish classification          |
+| orders      | **order_id (PK)**, **waiter_id (FK)**, **reservation_id (FK)** | Order handled by waiter      |
+| bill        | **bill_id (PK)**, amount, **order_id (FK)**                    | Billing details              |
+
 
 ### Relationships and Constraints
 
-| Relationship | Cardinality | Participation | Notes |
-|--------------|------------|---------------|-------|
-|              |            |               |       |
-|              |            |               |       |
-|              |            |               |       |
+| Relationship                       | Cardinality | Participation        | Notes                                   |
+| ---------------------------------- | ----------- | -------------------- | --------------------------------------- |
+| reservation (customer–reservation) | 1 : N       | Total on reservation | One customer can have many reservations |
+| assigns (reservation–dish)         | M : N       | Partial              | Multiple dishes per reservation         |
+| serves (waiter–order)              | 1 : N       | Total on order       | One waiter handles many orders          |
+| contains (order–category)          | N : 1       | Partial              | Order linked to category indirectly     |
+| belongs_to (dish–category)         | N : 1       | Total on dish        | Each dish belongs to one category       |
+| generates (order–bill)             | 1 : 1       | Total on bill        | Each order generates one bill           |
+
 
 ### Assumptions
-- 
-- 
-- 
-
+- Each entity has a unique primary key, and relationships use foreign keys.
+- A customer can make multiple reservations and order multiple dishes.
+- Each order is handled by one waiter and generates one bill.
 ---
 
 ## Instructions for Students
