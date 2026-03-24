@@ -1,18 +1,3 @@
-# Experiment 4: Aggregate Functions, Group By and Having Clause
-
-## AIM
-To study and implement aggregate functions, GROUP BY, and HAVING clause with suitable examples.
-
-## THEORY
-
-### Aggregate Functions
-These perform calculations on a set of values and return a single value.
-
-- **MIN()** – Smallest value  
-- **MAX()** – Largest value  
-- **COUNT()** – Number of rows  
-# Experiment 4: Aggregate Functions, Group By and Having Clause
-
 ## AIM
 To study and implement aggregate functions, GROUP BY, and HAVING clause with suitable examples.
 
